@@ -3,7 +3,7 @@
   gather_facts: false
   ignore_unreachable: yes
   tasks:
-    - name: Update auth rule
+    - name: Create auth rule
       cisco.ise.network_access_authorization_rules:
         ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ ise_verify }}"
@@ -12,7 +12,7 @@
         state: present
         profile: "{{ item.1 }}"
         rule:
-          id: "{{ id }}"
+          #id: "{{ id }}"
           name: "{{ item.0 }}"
           condition:
             attributeName: "uid"
