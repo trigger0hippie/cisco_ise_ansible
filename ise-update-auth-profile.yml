@@ -18,7 +18,7 @@
             attributeName: "{{ item.2 }}"
             attributeValue: "{{ item.0 }}"
             conditionType: "{{ item.3 }}"
-            #dictionaryName: "{{ item.4 }}"
+            dictionaryName: "{{ item.4 }}"
             operator: "{{ item.5 }}"
       with_items:
         "{{ auth_profile_input }}"
