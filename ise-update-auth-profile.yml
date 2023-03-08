@@ -16,7 +16,7 @@
           name: "{{ item.0 }}"
           condition:
             attributeName: "{{ item.2 }}"
-            attributeValue: "{{ item.0 }}"
+            attributeValue: "ConditionAttributes"
             conditionType: "{{ item.3 }}"
             dictionaryName: "{{ item.4 }}"
             operator: "{{ item.5 }}"
