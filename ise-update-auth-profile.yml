@@ -15,11 +15,11 @@
           id: "{{ id }}"
           name: "{{ item.0 }}"
           condition:
-            attributeName: "{{ item.2 }}"
+            attributeName: "uid"
             attributeValue: "{{ item.0 }}"
-            conditionType: "{{ item.3 }}"
-            dictionaryName: "{{ item.4 }}"
-            operator: "{{ item.5 }}"
+            conditionType: "ConditionAttributes"
+            dictionaryName: "OpenLDAP"
+            operator: "equals"
       loop: "{{ auth_profile_input }}"
       register: results2
     - name: Display 
