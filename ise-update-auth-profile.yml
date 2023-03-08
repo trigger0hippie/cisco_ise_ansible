@@ -11,7 +11,7 @@
         #id: "{{ id }}"
         state: present
         profile:
-          - "{{ item.1 }}"
+          - "{{ item.1 | flatten }}"
         rule:
           #id: "{{ id }}"
           name: "{{ item.0 }}"
