@@ -20,8 +20,7 @@
             conditionType: "ConditionAttributes"
             dictionaryName: "{{ item.4 }}"
             operator: "{{ item.5 }}"
-      with_items:
-        - auth_profile_input
+      with_items: "{{ auth_profile_input }}"
       register: results2
     - name: Display 
       debug:
