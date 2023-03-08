@@ -10,13 +10,13 @@
         policyId: "{{ policyid }}"
         #id: "{{ id }}"
         state: present
-        profile: "{{ item.value }}"
+        profile: "{{ item.profiles }}"
         rule:
           #id: "{{ id }}"
-          name: "{{ item.name }}"
+          name: "{{ item.rule_name }}"
           condition:
             attributeName: "uid"
-            attributeValue: "{{ item.name }}"
+            attributeValue: "{{ item.rule_name }}"
             conditionType: "ConditionAttributes"
             dictionaryName: "OpenLDAP"
             operator: "equals"
