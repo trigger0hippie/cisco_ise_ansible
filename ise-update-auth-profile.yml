@@ -10,7 +10,7 @@
         policyId: "{{ policyid }}"
         #id: "{{ id }}"
         state: present
-        profile: "{{ item.1 }}"
+        profile: "{{ item.1.item }}"
         rule:
           #id: "{{ id }}"
           name: "{{ item.0 }}"
