@@ -8,7 +8,7 @@ tasks:
       ise_username: "{{ise_username}}"
       ise_password: "{{ise_password}}"
       ise_verify: "{{ise_verify}}"
-    register: result
+    register: results
   - name: Display Deployment
     debug:
-      var: result
+      var: results
