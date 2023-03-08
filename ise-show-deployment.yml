@@ -5,11 +5,14 @@
   tasks:
     - name: Get all Deployment
       cisco.ise.deployment_info:
-        ise_hostname: "{{ansible_host}}"
-        #ise_username: "{{ise_username}}"
-        #ise_password: "{{ise_password}}"
+        ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ise_verify}}"
       register: results
     - name: Display Deployment
       debug:
         var: results
+    - name: Get all network_access_policy_set_info
+      cisco.ise.network_access_policy_set_info:
+        ise_hostname: "{{ ansible_host }}"
+        ise_verify: "{{ ise_verify }}"
+      register: result
