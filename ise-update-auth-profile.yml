@@ -3,17 +3,6 @@
   gather_facts: false
   ignore_unreachable: yes
   tasks:
-    # - name: Get all Deployment
-    #   cisco.ise.deployment_info:
-    #     ise_hostname: "{{ ansible_host }}"
-    #     ise_verify: "{{ise_verify}}"
-    #   register: results
-    
-    # - name: Get all network_access_policy_set_info
-    #   cisco.ise.network_access_policy_set_info:
-    #     ise_hostname: "{{ ansible_host }}"
-    #     ise_verify: "{{ ise_verify }}"
-    #   register: results1
     - name: Update auth rule
       cisco.ise.network_access_authorization_rules:
         ise_hostname: "{{ ansible_host }}"
