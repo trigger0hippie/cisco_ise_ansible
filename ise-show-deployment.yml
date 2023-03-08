@@ -1,0 +1,14 @@
+hosts: all
+gather_facts: false
+ignore_unreachable: yes
+tasks:
+  - name: Get all Deployment
+    cisco.ise.deployment_info:
+      ise_hostname: "{{ise_hostname}}"
+      ise_username: "{{ise_username}}"
+      ise_password: "{{ise_password}}"
+      ise_verify: "{{ise_verify}}"
+    register: result
+  - name: Display Deployment
+    debug:
+      var: result
