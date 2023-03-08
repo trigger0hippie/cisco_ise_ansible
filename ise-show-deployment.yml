@@ -18,7 +18,7 @@
       cisco.ise.network_access_authorization_rules_info:
         ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ise_verify}}"
-        policyid: "{{ policyid }}"
+        policyId: "{{ policyid }}"
       register: results2
     - name: Display Deployment
       debug:
