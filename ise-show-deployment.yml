@@ -15,7 +15,7 @@
         ise_verify: "{{ ise_verify }}"
       register: results1
     - name: Create auth profiles
-      cisco.ise.network_access_authorization_rules:
+      cisco.ise.network_access_authorization_rules_info:
         ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ise_verify}}"
         policyId: "{{ policyid }}"
