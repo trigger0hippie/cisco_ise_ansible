@@ -8,7 +8,7 @@
         ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ ise_verify }}"
         policyId: "{{ policyid }}"
-        id: "{{ id }}"
+        #id: "{{ id }}"
         state: present
         profile: "{{ item.1 }}"
         rule:
