@@ -13,7 +13,14 @@
       cisco.ise.network_access_policy_set_info:
         ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ ise_verify }}"
-      register: results
+      register: results1
+    
+    - name: Query auth profiles
+      cisco.ise.network_access_authorization_rules:
+        ise_hostname: "{{ise_hostname}}"
+        ise_verify: "{{ise_verify}}"
+      state: query
+      register: results2
     - name: Display Deployment
       debug:
-        var: results
+        var: results2
