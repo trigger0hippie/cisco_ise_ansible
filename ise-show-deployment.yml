@@ -3,37 +3,16 @@
   gather_facts: false
   ignore_unreachable: yes
   tasks:
-    # - name: Get all Deployment
-    #   cisco.ise.deployment_info:
-    #     ise_hostname: "{{ ansible_host }}"
-    #     ise_verify: "{{ise_verify}}"
-    #   register: results
-    
+    - name: Get all Deployment
+      cisco.ise.deployment_info:
+        ise_hostname: "{{ ansible_host }}"
+        ise_verify: "{{ise_verify}}"
+      register: results
     # - name: Get all network_access_policy_set_info
     #   cisco.ise.network_access_policy_set_info:
     #     ise_hostname: "{{ ansible_host }}"
     #     ise_verify: "{{ ise_verify }}"
-    #   register: results1
-    - name: Update auth rule
-      cisco.ise.network_access_authorization_rules:
-        ise_hostname: "{{ ansible_host }}"
-        ise_verify: "{{ ise_verify }}"
-        policyId: "{{ policyid }}"
-        id: "{{ id }}"
-        state: present
-        profile: "{{ item.1 }}"
-        rule:
-          id: "{{ id }}"
-          name: "{{ item.0 }}"
-          condition:
-            attributeName: "{{ item.2 }}"
-            attributeValue: "{{ item.0 }}"
-            conditionType: "{{ item.3 }}"
-            dictionaryName: "{{ item.4 }}"
-            operator: "{{ item.5 }}"
-      with_items:
-        "{{ auth_profile_input }}"
-      register: results2
+    #   register: results
     - name: Display 
       debug:
-        var: results2
+        var: results
