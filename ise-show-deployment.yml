@@ -12,7 +12,7 @@
       cisco.ise.network_access_policy_set_info:
         ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ ise_verify }}"
-      register: results
+      register: results2
     - name: Display 
       debug:
-        var: results
+        var: results2
