@@ -8,11 +8,11 @@
         ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ise_verify}}"
       register: results
-    # - name: Get all network_access_policy_set_info
-    #   cisco.ise.network_access_policy_set_info:
-    #     ise_hostname: "{{ ansible_host }}"
-    #     ise_verify: "{{ ise_verify }}"
-    #   register: results
+    - name: Get all network_access_policy_set_info
+      cisco.ise.network_access_policy_set_info:
+        ise_hostname: "{{ ansible_host }}"
+        ise_verify: "{{ ise_verify }}"
+      register: results
     - name: Display 
       debug:
         var: results
