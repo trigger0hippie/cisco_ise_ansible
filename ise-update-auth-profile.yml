@@ -21,11 +21,7 @@
             dictionaryName: "OpenLDAP"
             operator: "equals"
       loop: "{{ auth_profile_input }}"
-      #register: results2
       tags: update
-    # - name: Display 
-    #   debug:
-    #     var: results2
     - name: Get all rules info
       cisco.ise.network_access_authorization_rules_info:
         ise_hostname: "{{ ansible_host }}"
