@@ -8,11 +8,11 @@
         ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ ise_verify }}"
         policyId: "{{ policyid }}"
-        #id: "{{ id }}"
+        #id: "{{ rule_id }}"
         state: present
         profile: "{{ item.profiles }}"
         rule:
-          #id: "{{ id }}"
+          #id: "{{ rule_id }}"
           name: "{{ item.rule_name }}"
           condition:
             attributeName: "uid"
@@ -21,15 +21,26 @@
             dictionaryName: "OpenLDAP"
             operator: "equals"
       loop: "{{ auth_profile_input }}"
-      register: results2
+      #register: results2
       tags: update
     # - name: Display 
     #   debug:
     #     var: results2
-    - name: Delete auth rules in policy set
+    - name: Get rule IDs
+      cisco.ise.network_access_authorization_rules_info:
+        ise_hostname: "{{ ansible_host }}"
+        ise_verify: "{{ ise_verify }}"
+        policyId: "{{ policyid }}"
+      register: rule_ids
+      tags: get_id
+    - name: Display 
+      debug:
+        var: rule_ids  
+    - name: Delete auth rules by ID
       cisco.ise.network_access_authorization_rules:
         ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ ise_verify }}"
         policyId: "{{ policyid }}"
+        id: "{{ rule_id }}"
         state: absent
       tags: delete
