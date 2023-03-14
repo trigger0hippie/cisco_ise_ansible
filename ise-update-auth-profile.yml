@@ -35,11 +35,11 @@
       tags: get_all_rules
     - name: Get rule IDs in a list
       ansible.builtin.set_fact:
-        rule_id_list: "{{ rule_id_list | default([]) }} + ['{{ item.id }}']"
-      with_items: "{{ all_rules.ise_response.rule }}"
-      when: 
-        - all_rules.ise_response.rule.default == False
-        - all_rules.ise_response.rule.id is defined
+        rule_id_list: "{{ rule_id_list | default([]) }} + ['{{ item.item.id }}']"
+      with_items: "{{ all_rules.ise_response}}"
+      # when: 
+      #   - all_rules.ise_response.rule.default == False
+      #   - all_rules.ise_response.rule.id is defined
       tags: get_all_rules
     - name: Display 
       debug:
