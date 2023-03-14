@@ -49,7 +49,7 @@
         ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ ise_verify }}"
         policyId: "{{ policyid }}"
-        id: "{{ rule_id }}"
+        id: "{{ item }}"
         state: absent
       tags: delete
       with_items: "{{ rule_id_list }}"
