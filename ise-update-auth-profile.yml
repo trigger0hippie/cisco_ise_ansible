@@ -26,7 +26,7 @@
     # - name: Display 
     #   debug:
     #     var: results2
-    - name: Get all rules
+    - name: Get all rules info
       cisco.ise.network_access_authorization_rules_info:
         ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ ise_verify }}"
@@ -52,3 +52,4 @@
         id: "{{ rule_id }}"
         state: absent
       tags: delete
+      with_items: "{{ rule_id_list }}"
