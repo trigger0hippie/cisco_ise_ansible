@@ -26,16 +26,25 @@
     # - name: Display 
     #   debug:
     #     var: results2
-    - name: Get rule IDs
+    - name: Get all rules
       cisco.ise.network_access_authorization_rules_info:
         ise_hostname: "{{ ansible_host }}"
         ise_verify: "{{ ise_verify }}"
         policyId: "{{ policyid }}"
-      register: rule_ids
-      tags: get_id
+      register: all_rules
+      tags: get_all_rules
+    - name: Get rule IDs in a list
+      ansible.builtin.set_fact:
+        rule_id_list: "{{ rule_id_list | default([]) }} + ['{{ item.id }}']"
+      with_items: "{{ all_rules.ise_response.rule }}"
+      when: 
+        - all_rules.ise_response.rule.default == False
+        - all_rules.ise_response.rule.id is defined
+      tags: get_all_rules
     - name: Display 
       debug:
-        var: rule_ids  
+        var: rule_id_list  
+      tags: get_all_rules
     - name: Delete auth rules by ID
       cisco.ise.network_access_authorization_rules:
         ise_hostname: "{{ ansible_host }}"
